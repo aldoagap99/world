@@ -18,7 +18,8 @@
 
     <!-- Incluye JS de Toastr en tu archivo Blade -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
     <!-- jQuery y Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -38,7 +39,7 @@
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{route("countries")}}">Paises</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{route("states")}}">Estados</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{route("cities")}}">Ciudades</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{route("archivo")}}">Upload</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
             </div>
         </div>
@@ -68,7 +69,17 @@
             </nav>
             <!-- Page content-->
             <div class="container-fluid" @yield("content")>
+            @if (session('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                    </div>
+                @endif
 
+                @if (session('error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ session('error') }}
+                    </div>
+                @endif
             </div>
         </div>
     </div>

@@ -5,6 +5,7 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\StateController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UploadController;
 ;
 Route::get('/', function () {
     return view('welcome');
@@ -36,4 +37,11 @@ Route::prefix('/ciudades')->group(function(){
     Route::post('/crear', [CityController::class, 'store'])->name('cities.store');
     Route::put('/actualizar/{id}', [CityController::class, 'update'])->name('cities.update');
     Route::put('/status', [CityController::class, 'status'])->name('cities.status');
+});
+
+
+Route::prefix('/archivo')->group(function(){
+    Route::get('/', [UploadController::class, 'index'])->name('archivo');
+    Route::post('/crear', [UploadController::class, 'uploadDataFromText'])->name('archivo.store');
+
 });
